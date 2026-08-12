@@ -9,6 +9,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+// Creates WebDriver instances for browsers running locally.
 public final class LocalWebDriverProvider implements WebDriverProvider {
 
     @Override

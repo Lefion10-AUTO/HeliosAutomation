@@ -3,6 +3,7 @@ package com.helios.driver;
 import com.helios.config.BrowserConfig;
 import org.openqa.selenium.WebDriver;
 
+// Manages one WebDriver instance per execution thread.
 public final class DriverManager {
 
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
@@ -37,6 +38,8 @@ public final class DriverManager {
         try {
             if (driver != null) {
                 driver.quit();
+                //why quit() and not close():
+                //if multiple windows/tabs exist, the WebDriver session may remain alive.
             }
         } finally {
             DRIVER.remove();
