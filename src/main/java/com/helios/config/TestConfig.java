@@ -14,4 +14,8 @@ public final class TestConfig {
         return Boolean.parseBoolean(System.getProperty("headless", "false"));
     }
 
+    public static boolean remote() {
+        return Boolean.parseBoolean(System.getProperty("remote", "false"));
+    }
+
 }
