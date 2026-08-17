@@ -11,14 +11,14 @@ public final class DriverManager {
     private DriverManager() {
     }
 
-    public static void start(WebDriverProvider provider, BrowserConfig config) {
+    // Starts a WebDriver for the current execution thread.
+    public static void start(BrowserConfig config) {
 
         if (DRIVER.get() != null) {
             throw new IllegalStateException("WebDriver is already initialized for thread: " + Thread.currentThread().getName());
         }
 
-
-        DRIVER.set(provider.create(config));
+        DRIVER.set(DriverFactory.create(config));
     }
 
     public static WebDriver get() {

@@ -10,7 +10,10 @@ public class DriverFactory {
         // Prevents instantiation of this utility class.
     }
 
-    public static WebDriver create(WebDriverProvider provider, BrowserConfig config) {
+    // Selects the appropriate provider and creates the WebDriver.
+    public static WebDriver create(BrowserConfig config) {
+
+        WebDriverProvider provider = new LocalWebDriverProvider();
         return provider.create(config);
     }
 }
