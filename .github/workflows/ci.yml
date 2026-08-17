@@ -26,11 +26,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-m2-
 
-      - name: Install Chromium and Chromedriver
+      - name: Install Google Chrome and Chromedriver
         run: |
           sudo apt-get update
-          sudo apt-get install -y chromium-browser chromium-chromedriver
-          chromium-browser --version || true
+          sudo apt-get install -y google-chrome-stable
+          google-chrome --version
           chromedriver --version || true
 
       - name: Run tests
