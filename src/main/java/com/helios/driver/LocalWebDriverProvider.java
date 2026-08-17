@@ -29,6 +29,7 @@ public final class LocalWebDriverProvider implements WebDriverProvider {
         if (config.headless()) {
             // Run the browser without displaying a visible UI.
             options.addArguments("--headless=new");
+            options.setBinary("/usr/bin/google-chrome-stable");
         }
 
         return new ChromeDriver(options);
