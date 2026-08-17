@@ -4,9 +4,9 @@ import com.helios.config.BrowserConfig;
 import com.helios.config.BrowserType;
 import com.helios.driver.DriverManager;
 import com.helios.utils.ScreenshotUtils;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.ITestResult;
 
 public class BaseTest {
     @BeforeMethod(alwaysRun = true)
