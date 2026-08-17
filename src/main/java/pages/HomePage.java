@@ -23,7 +23,10 @@ public class HomePage extends BasePage {
         waitForElementVisible(pageHeading);
     }
 
-    public boolean isABTestingButtonVisible() {
-        return driver.findElement(abTestingLink).isDisplayed();
+    public ABTestingPage openABTesting() {
+        waitForElementClickable(abTestingLink);
+        driver.findElement(abTestingLink).click();
+
+        return new ABTestingPage(driver);
     }
 }

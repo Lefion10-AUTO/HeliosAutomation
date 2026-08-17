@@ -1,5 +1,7 @@
 package com.helios.config;
 
+import java.time.Duration;
+
 public final class TestConfig {
 
     private TestConfig() {
@@ -16,6 +18,14 @@ public final class TestConfig {
 
     public static boolean remote() {
         return Boolean.parseBoolean(System.getProperty("remote", "false"));
+    }
+
+    public static Duration explicitWaitTimeout() {
+        return Duration.ofSeconds(
+                Long.parseLong(
+                        System.getProperty("waitTimeout", "10")
+                )
+        );
     }
 
 }

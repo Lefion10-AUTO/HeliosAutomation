@@ -21,8 +21,14 @@ public abstract class BasePage {
     }
 
     protected void waitForElementVisible(By locator) {
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(locator)
-        );
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    protected void waitForElementClickable(By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    protected void waitForUrlContains(String value) {
+        wait.until(ExpectedConditions.urlContains(value));
     }
 }
