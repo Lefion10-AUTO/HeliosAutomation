@@ -18,7 +18,9 @@ public final class ScreenshotUtils {
     public static void capture(WebDriver driver, String testName) {
         try {
             File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            Path destination = Path.of("target", "screenshots", testName + ".png");
+
+            String fileName = testName + "_" + Thread.currentThread().getName() + "_" + System.currentTimeMillis() + ".png";
+            Path destination = Path.of("target", "screenshots", fileName);
 
             Files.createDirectories(destination.getParent());
             Files.copy(source.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
