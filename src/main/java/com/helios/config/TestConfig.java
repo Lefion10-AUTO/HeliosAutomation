@@ -18,6 +18,10 @@ public final class TestConfig {
         return Boolean.parseBoolean(System.getProperty("remote", "false"));
     }
 
+    public static String gridUrl() {
+        return System.getProperty("gridUrl", "http://localhost:4444");
+    }
+
     public static int retryCount() {
         try {
             return Math.max(0, Integer.parseInt(System.getProperty("test.retry.count", "2")));

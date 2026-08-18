@@ -13,7 +13,10 @@ public class DriverFactory {
     // Selects the appropriate provider and creates the WebDriver.
     public static WebDriver create(BrowserConfig config) {
 
-        WebDriverProvider provider = new LocalWebDriverProvider();
+        WebDriverProvider provider = config.remote()
+                ? new RemoteWebDriverProvider()
+                : new LocalWebDriverProvider();
+
         return provider.create(config);
     }
 }

@@ -17,6 +17,6 @@ public class ABTestingTest extends BaseTest {
         homePage.open();
         ABTestingPage abTestingPage = homePage.openABTesting();
 
-        Assert.assertEquals(abTestingPage.getHeading(), EXPECTED_HEADING);
+        Assert.assertEquals(abTestingPage.getHeading(), EXPECTED_HEADING, "Unexpected A/B Testing page heading");
     }
 }
