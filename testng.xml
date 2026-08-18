@@ -7,6 +7,11 @@
        parallel="methods"
        thread-count="3">
 
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+        <listener class-name="listeners.RetryListener"/>
+    </listeners>
+
     <test name="Local">
         <classes>
             <class name="com.helios.tests.BrowserSmokeTest"/>
