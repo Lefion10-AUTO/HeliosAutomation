@@ -2,14 +2,13 @@ package com.helios.tests;
 
 import com.helios.config.BrowserConfig;
 import com.helios.driver.DriverManager;
-import com.helios.utils.ScreenshotUtils;
 import listeners.RetryListener;
-import org.testng.ITestResult;
+import listeners.TestListener;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
-@Listeners(RetryListener.class)
+@Listeners({RetryListener.class, TestListener.class})
 public class BaseTest {
 
     protected final BrowserConfig config = BrowserConfig.fromSystemProperties();
@@ -20,11 +19,7 @@ public class BaseTest {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void tearDown(ITestResult result) {
-        if (!result.isSuccess()) {
-            ScreenshotUtils.capture(DriverManager.get(), result.getName());
-        }
-
+    public void tearDown() {
         DriverManager.stop();
     }
 }
