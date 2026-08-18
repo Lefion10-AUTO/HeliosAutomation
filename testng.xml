@@ -12,10 +12,28 @@
         <listener class-name="listeners.RetryListener"/>
     </listeners>
 
-    <test name="Local">
-        <classes>
-            <class name="com.helios.tests.BrowserSmokeTest"/>
-        </classes>
+    <test name="Smoke Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="com.helios.tests"/>
+        </packages>
+    </test>
+
+    <test name="Regression Tests">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="com.helios.tests"/>
+        </packages>
     </test>
 
 </suite>

@@ -7,8 +7,8 @@ public final class TestDataProvider {
     private TestDataProvider() {
     }
 
-    @DataProvider(name = "loginData")
-    public static Object[][] loginData() {
+    @DataProvider(name = "validLoginData")
+    public static Object[][] validLoginData() {
         return new Object[][]{
                 {new LoginData("tomsmith", "SuperSecretPassword!")}
         };
