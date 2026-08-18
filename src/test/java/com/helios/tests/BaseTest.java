@@ -3,10 +3,13 @@ package com.helios.tests;
 import com.helios.config.BrowserConfig;
 import com.helios.driver.DriverManager;
 import com.helios.utils.ScreenshotUtils;
+import listeners.RetryListener;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
+@Listeners(RetryListener.class)
 public class BaseTest {
 
     protected final BrowserConfig config = BrowserConfig.fromSystemProperties();

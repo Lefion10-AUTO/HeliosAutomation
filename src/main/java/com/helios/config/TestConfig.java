@@ -1,7 +1,5 @@
 package com.helios.config;
 
-import java.time.Duration;
-
 public final class TestConfig {
 
     private TestConfig() {
@@ -20,12 +18,12 @@ public final class TestConfig {
         return Boolean.parseBoolean(System.getProperty("remote", "false"));
     }
 
-    public static Duration explicitWaitTimeout() {
-        return Duration.ofSeconds(
-                Long.parseLong(
-                        System.getProperty("waitTimeout", "10")
-                )
-        );
+    public static int retryCount() {
+        try {
+            return Math.max(0, Integer.parseInt(System.getProperty("test.retry.count", "2")));
+        } catch (NumberFormatException ex) {
+            return 1;
+        }
     }
 
 }
