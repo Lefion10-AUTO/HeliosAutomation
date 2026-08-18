@@ -19,7 +19,7 @@ public class HomePage extends BasePage {
         waitForLoading();
     }
 
-    private void waitForLoading() {
+    void waitForLoading() {
         waitForElementVisible(pageHeading);
     }
 
@@ -27,6 +27,8 @@ public class HomePage extends BasePage {
         waitForElementClickable(abTestingLink);
         driver.findElement(abTestingLink).click();
 
-        return new ABTestingPage(driver);
+        ABTestingPage abTestingPage = new ABTestingPage(driver);
+        abTestingPage.waitForLoading();
+        return abTestingPage;
     }
 }

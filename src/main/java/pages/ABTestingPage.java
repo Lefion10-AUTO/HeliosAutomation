@@ -11,12 +11,11 @@ public class ABTestingPage extends BasePage {
         super(driver);
     }
 
-    private void waitForLoading() {
+    void waitForLoading() {
         waitForElementVisible(heading);
     }
 
-    public boolean isLoaded() {
-        waitForLoading();
-        return driver.findElement(heading).isDisplayed();
+    public String getHeading() {
+        return driver.findElement(heading).getText();
     }
 }

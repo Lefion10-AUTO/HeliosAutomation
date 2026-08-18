@@ -7,6 +7,7 @@ import pages.ABTestingPage;
 import pages.HomePage;
 
 public class ABTestingTest extends BaseTest {
+    private static final String EXPECTED_HEADING = "A/B Test Control";
 
     @Test(groups = "smoke")
     public void abTestingPageLoadsSuccessfully() {
@@ -16,6 +17,6 @@ public class ABTestingTest extends BaseTest {
         homePage.open();
         ABTestingPage abTestingPage = homePage.openABTesting();
 
-        Assert.assertTrue(abTestingPage.isLoaded(), "A/B Testing page was not loaded");
+        Assert.assertEquals(abTestingPage.getHeading(), EXPECTED_HEADING);
     }
 }
