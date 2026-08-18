@@ -15,6 +15,11 @@ public class RetryAnalyzer implements IRetryAnalyzer {
 
     @Override
     public boolean retry(ITestResult result) {
+
+        if (result.getMethod().isBeforeMethodConfiguration()) {
+            return false;
+        }
+
         if (maxRetries <= 0) {
             return false;
         }
