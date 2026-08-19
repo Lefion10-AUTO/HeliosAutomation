@@ -30,3 +30,4 @@ jobs:
           path: |
             target/logs/
             target/screenshots/
+            target/surefire-reports/
