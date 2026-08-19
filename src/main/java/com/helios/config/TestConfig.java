@@ -26,7 +26,7 @@ public final class TestConfig {
         try {
             return Math.max(0, Integer.parseInt(System.getProperty("test.retry.count", "2")));
         } catch (NumberFormatException ex) {
-            return 1;
+            return 2;
         }
     }
 

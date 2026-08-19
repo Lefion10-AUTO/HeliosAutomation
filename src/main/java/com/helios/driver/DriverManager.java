@@ -2,11 +2,14 @@ package com.helios.driver;
 
 import com.helios.config.BrowserConfig;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // Manages one WebDriver instance per execution thread.
 public final class DriverManager {
 
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
+    private static final Logger log = LoggerFactory.getLogger(DriverManager.class);
 
     private DriverManager() {
     }
@@ -17,6 +20,8 @@ public final class DriverManager {
         if (DRIVER.get() != null) {
             throw new IllegalStateException("WebDriver is already initialized for thread: " + Thread.currentThread().getName());
         }
+
+        log.info("Starting {} browser | headless={} | remote={}", config.browser(), config.headless(), config.remote());
 
         DRIVER.set(DriverFactory.create(config));
     }
@@ -37,6 +42,8 @@ public final class DriverManager {
 
         try {
             if (driver != null) {
+                log.info("Stopping WebDriver | thread={}", Thread.currentThread().getName());
+
                 driver.quit();
                 //why quit() and not close():
                 //if multiple windows/tabs exist, the WebDriver session may remain alive.
