@@ -2,11 +2,11 @@ package pages;
 
 import com.helios.config.TestConfig;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public abstract class BasePage {
 
@@ -15,11 +15,10 @@ public abstract class BasePage {
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(
-                driver,
-                TestConfig.explicitWaitTimeout()
-        );
+        this.wait = new WebDriverWait(driver, TestConfig.explicitWaitTimeout());
     }
+
+    abstract void waitForLoading();
 
     protected void waitForElementVisible(By locator) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -37,7 +36,11 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
-    protected void waitForUrlContains(String value) {
-        wait.until(ExpectedConditions.urlContains(value));
+    protected void clearWithKeyboard(By locator) {
+        WebElement element = driver.findElement(locator);
+
+        element.click();
+        element.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        element.sendKeys(Keys.BACK_SPACE);
     }
 }

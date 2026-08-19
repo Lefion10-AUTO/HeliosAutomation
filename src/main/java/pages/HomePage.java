@@ -10,6 +10,7 @@ public class HomePage extends BasePage {
     private final By pageHeading = By.tagName("h1");
     private final By abTestingLink = By.cssSelector("a[href='/abtest']");
     private final By dynamicLoadingLink = By.cssSelector("a[href='/dynamic_loading']");
+    private final By framesLink = By.cssSelector("a[href='/frames']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -38,6 +39,14 @@ public class HomePage extends BasePage {
         DynamicLoadingPage dynamicLoadingPage = new DynamicLoadingPage(driver);
         dynamicLoadingPage.waitForLoading();
         return dynamicLoadingPage;
+    }
+
+    public FramesPage openFramesPage() {
+        clickWhenClickable(framesLink);
+
+        FramesPage framesPage = new FramesPage(driver);
+        framesPage.waitForLoading();
+        return framesPage;
     }
 
 }
