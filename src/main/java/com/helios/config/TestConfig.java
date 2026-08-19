@@ -1,5 +1,7 @@
 package com.helios.config;
 
+import java.time.Duration;
+
 public final class TestConfig {
 
     private TestConfig() {
@@ -20,6 +22,10 @@ public final class TestConfig {
 
     public static String gridUrl() {
         return System.getProperty("gridUrl", "http://localhost:4444");
+    }
+
+    public static Duration explicitWaitTimeout() {
+        return Duration.ofSeconds(Long.parseLong(System.getProperty("waitTimeout", "10")));
     }
 
     public static int retryCount() {
