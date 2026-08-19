@@ -17,7 +17,7 @@ public class LoginTest extends BaseTest {
         loginPage.open();
         loginPage.login(data.username(), data.password());
 
-        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login should be successful");
+        Assert.assertTrue(loginPage.isUserLoggedIn(), "Login should be successful");
     }
 
     @Test(groups = "regression", dataProvider = "invalidLoginData", dataProviderClass = TestDataProvider.class)
@@ -28,7 +28,7 @@ public class LoginTest extends BaseTest {
         loginPage.open();
         loginPage.login(data.username(), data.password());
 
-        Assert.assertFalse(loginPage.isLoginSuccessful(), "Login should not be successful");
+        Assert.assertFalse(loginPage.isUserLoggedIn(), "Login should not be successful");
     }
 
 }

@@ -3,8 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Objects;
-
 public class LoginPage extends BasePage {
 
     private static final String URL = "https://the-internet.herokuapp.com/login";
@@ -23,17 +21,21 @@ public class LoginPage extends BasePage {
         waitForLoading();
     }
 
-    private void waitForLoading() {
+    void waitForLoading() {
         waitForElementVisible(pageHeading);
     }
 
-    public void login(String username, String password) {
+    public SecureAreaPage login(String username, String password) {
         driver.findElement(usernameField).sendKeys(username);
         driver.findElement(passwordField).sendKeys(password);
         driver.findElement(loginButton).click();
+
+        SecureAreaPage secureAreaPage = new SecureAreaPage(driver);
+        secureAreaPage.waitForLoading();
+        return secureAreaPage;
     }
 
-    public boolean isLoginSuccessful() {
-        return Objects.requireNonNull(driver.getCurrentUrl()).contains("/secure");
+    public boolean isUserLoggedIn() {
+        return driver.getCurrentUrl().contains("/secure");
     }
 }
