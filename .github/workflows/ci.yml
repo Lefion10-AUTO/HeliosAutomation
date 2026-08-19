@@ -21,3 +21,12 @@ jobs:
 
       - name: Run tests
         run: mvn clean test -Dheadless=true -Dsurefire.suiteXmlFiles=testng.xml
+
+      - name: Upload test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: helios-test-artifacts
+          path: |
+            target/logs/
+            target/screenshots/
