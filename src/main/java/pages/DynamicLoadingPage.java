@@ -7,7 +7,7 @@ public class DynamicLoadingPage extends BasePage{
 
     private final By header = By.xpath("//h3[contains(text(),'Dynamically Loaded Page Elements')]");
     private final By example2Link = By.cssSelector("a[href='/dynamic_loading/2']");
-    private final By startButton = By.id("start");
+    private final By startButton = By.xpath("//div[@id='start']/button");
     private final By loadingIndicator = By.id("loading");
     private final By loadedText = By.id("finish");
 
