@@ -1,11 +1,10 @@
 package pages;
 
+import com.helios.config.UrlConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
-
-    private static final String URL = "https://the-internet.herokuapp.com/login";
 
     private final By pageHeading = By.tagName("h2");
     private final By usernameField = By.id("username");
@@ -18,7 +17,7 @@ public class LoginPage extends BasePage {
     }
 
     public void open() {
-        driver.get(URL);
+        driver.get(UrlConfig.login());
         waitForLoading();
     }
 
@@ -44,7 +43,7 @@ public class LoginPage extends BasePage {
     }
 
     public boolean isUserLoggedIn() {
-        return driver.getCurrentUrl().contains("/secure");
+        return driver.getCurrentUrl().equals(UrlConfig.secureArea());
     }
 
     private void submitCredentials(String username, String password) {

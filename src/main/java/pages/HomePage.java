@@ -1,11 +1,10 @@
 package pages;
 
+import com.helios.config.UrlConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {
-
-    private static final String URL = "https://the-internet.herokuapp.com/";
 
     private final By pageHeading = By.tagName("h1");
     private final By abTestingLink = By.cssSelector("a[href='/abtest']");
@@ -17,7 +16,7 @@ public class HomePage extends BasePage {
     }
 
     public void open() {
-        driver.get(URL);
+        driver.get(UrlConfig.home());
         waitForLoading();
     }
 
