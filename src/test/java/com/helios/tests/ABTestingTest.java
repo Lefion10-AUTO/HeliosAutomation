@@ -6,8 +6,14 @@ import org.testng.annotations.Test;
 import pages.ABTestingPage;
 import pages.HomePage;
 
+import java.util.Set;
+
 public class ABTestingTest extends BaseTest {
-    private static final String EXPECTED_HEADING = "A/B Test Control";
+
+    private static final Set<String> EXPECTED_HEADINGS = Set.of(
+            "A/B Test Control",
+            "A/B Test Variation 1"
+    );
 
     @Test(groups = "smoke")
     public void abTestingPageLoadsSuccessfully() {
@@ -17,6 +23,11 @@ public class ABTestingTest extends BaseTest {
         homePage.open();
         ABTestingPage abTestingPage = homePage.openABTesting();
 
-        Assert.assertEquals(abTestingPage.getHeading(), EXPECTED_HEADING, "Unexpected A/B Testing page heading");
+        String actualHeading = abTestingPage.getHeading();
+
+        Assert.assertTrue(
+                EXPECTED_HEADINGS.contains(actualHeading),
+                "Unexpected A/B Testing page heading: " + actualHeading
+        );
     }
 }

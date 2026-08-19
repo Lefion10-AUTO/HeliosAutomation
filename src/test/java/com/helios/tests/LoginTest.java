@@ -9,6 +9,8 @@ import pages.LoginPage;
 
 public class LoginTest extends BaseTest {
 
+    private static final String INVALID_USERNAME_MESSAGE = "Your username is invalid!";
+
     @Test(groups = "smoke", dataProvider = "validLoginData", dataProviderClass = TestDataProvider.class)
     public void validLogin(LoginData data) {
 
@@ -26,9 +28,13 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(DriverManager.get());
 
         loginPage.open();
-        loginPage.login(data.username(), data.password());
+        loginPage.attemptLogin(data.username(), data.password());
 
         Assert.assertFalse(loginPage.isUserLoggedIn(), "Login should not be successful");
+        Assert.assertTrue(
+                loginPage.getFlashMessage().contains(INVALID_USERNAME_MESSAGE),
+                "Expected an invalid username error message"
+        );
     }
 
 }
