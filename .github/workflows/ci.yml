@@ -20,7 +20,7 @@ jobs:
           cache: maven
 
       - name: Run tests
-        run: mvn clean test -Dheadless=true -Dsurefire.suiteXmlFiles=testng.xml
+        run: mvn clean test -Dheadless=true
 
       - name: Upload test artifacts
         if: always()
