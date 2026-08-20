@@ -10,6 +10,7 @@ public class HomePage extends BasePage {
     private final By abTestingLink = By.cssSelector("a[href='/abtest']");
     private final By dynamicLoadingLink = By.cssSelector("a[href='/dynamic_loading']");
     private final By framesLink = By.cssSelector("a[href='/frames']");
+    private final By javaScriptAlertsLink = By.cssSelector("a[href='/javascript_alerts']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -46,6 +47,14 @@ public class HomePage extends BasePage {
         FramesPage framesPage = new FramesPage(driver);
         framesPage.waitForLoading();
         return framesPage;
+    }
+
+    public JavaScriptAlertsPage openJavaScriptAlertsPage() {
+        clickWhenClickable(javaScriptAlertsLink);
+
+        JavaScriptAlertsPage javaScriptAlertsPage = new JavaScriptAlertsPage(driver);
+        javaScriptAlertsPage.waitForLoading();
+        return javaScriptAlertsPage;
     }
 
 }
