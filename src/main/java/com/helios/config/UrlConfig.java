@@ -3,7 +3,10 @@ package com.helios.config;
 public final class UrlConfig {
 
     private static final String BASE_URL =
-            "https://the-internet.herokuapp.com";
+            System.getProperty(
+                    "baseUrl",
+                    "https://the-internet.herokuapp.com"
+            );
 
     private UrlConfig() {
     }
