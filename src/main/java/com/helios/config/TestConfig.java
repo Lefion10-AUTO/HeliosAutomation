@@ -25,7 +25,25 @@ public final class TestConfig {
     }
 
     public static Duration explicitWaitTimeout() {
-        return Duration.ofSeconds(Long.parseLong(System.getProperty("waitTimeout", "10")));
+        String value = System.getProperty("waitTimeout", "10");
+
+        try {
+            long seconds = Long.parseLong(value);
+
+            if (seconds <= 0) {
+                throw new IllegalArgumentException(
+                        "waitTimeout must be greater than 0 seconds: " + value
+                );
+            }
+
+            return Duration.ofSeconds(seconds);
+
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(
+                    "waitTimeout must be a valid number: " + value,
+                    e
+            );
+        }
     }
 
     public static int retryCount() {
