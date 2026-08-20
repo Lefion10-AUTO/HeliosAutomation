@@ -11,6 +11,7 @@ public class HomePage extends BasePage {
     private final By dynamicLoadingLink = By.cssSelector("a[href='/dynamic_loading']");
     private final By framesLink = By.cssSelector("a[href='/frames']");
     private final By javaScriptAlertsLink = By.cssSelector("a[href='/javascript_alerts']");
+    private final By multipleWindowsLink = By.cssSelector("a[href='/windows']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -55,6 +56,14 @@ public class HomePage extends BasePage {
         JavaScriptAlertsPage javaScriptAlertsPage = new JavaScriptAlertsPage(driver);
         javaScriptAlertsPage.waitForLoading();
         return javaScriptAlertsPage;
+    }
+
+    public MultipleWindows openMultipleWindowsPage() {
+        clickWhenClickable(multipleWindowsLink);
+
+        MultipleWindows multipleWindowsPage = new MultipleWindows(driver);
+        multipleWindowsPage.waitForLoading();
+        return multipleWindowsPage;
     }
 
 }
