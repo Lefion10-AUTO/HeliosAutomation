@@ -13,6 +13,11 @@ public class TestListener implements ITestListener {
     private static final Logger log = LoggerFactory.getLogger(TestListener.class);
 
     @Override
+    public void onTestSuccess(ITestResult result) {
+        log.info("Test passed: {}", result.getName());
+    }
+
+    @Override
     public void onTestFailure(ITestResult result) {
         DriverManager.currentDriver().ifPresent(driver -> {
             try {
