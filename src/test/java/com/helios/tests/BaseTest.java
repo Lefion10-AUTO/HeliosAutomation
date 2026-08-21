@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
 @Listeners({RetryListener.class, TestListener.class})
-public class BaseTest {
+public abstract class BaseTest {
 
     protected final BrowserConfig config = BrowserConfig.fromSystemProperties();
 

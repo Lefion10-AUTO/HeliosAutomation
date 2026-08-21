@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 // Creates WebDriver instances through the configured provider.
-public class DriverFactory {
+public final class DriverFactory {
     private static final Logger log = LoggerFactory.getLogger(DriverFactory.class);
 
     private DriverFactory() {
