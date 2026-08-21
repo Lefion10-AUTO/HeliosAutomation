@@ -9,11 +9,9 @@ import org.testng.ITestResult;
 public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
-        WebDriver driver = DriverManager.get();
-
-        ScreenshotUtils.capture(
-                driver,
-                result.getName()
-        );
+        DriverManager.currentDriver()
+                .ifPresent(driver ->
+                        ScreenshotUtils.capture(driver, result.getName())
+                );
     }
 }

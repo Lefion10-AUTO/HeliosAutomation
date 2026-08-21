@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Optional;
+
 // Manages one WebDriver instance per execution thread.
 public final class DriverManager {
 
@@ -53,5 +55,8 @@ public final class DriverManager {
         }
     }
 
+    public static Optional<WebDriver> currentDriver() {
+        return Optional.ofNullable(DRIVER.get());
+    }
 
 }
