@@ -12,6 +12,7 @@ public class HomePage extends BasePage {
     private final By framesLink = By.cssSelector("a[href='/frames']");
     private final By javaScriptAlertsLink = By.cssSelector("a[href='/javascript_alerts']");
     private final By multipleWindowsLink = By.cssSelector("a[href='/windows']");
+    private final By fileUploadLink = By.cssSelector("a[href='/upload']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -64,6 +65,14 @@ public class HomePage extends BasePage {
         MultipleWindows multipleWindowsPage = new MultipleWindows(driver);
         multipleWindowsPage.waitForLoading();
         return multipleWindowsPage;
+    }
+
+    public FileUploadPage openFileUploadPage() {
+        clickWhenClickable(fileUploadLink);
+
+        FileUploadPage fileUploadPage = new FileUploadPage(driver);
+        fileUploadPage.waitForLoading();
+        return fileUploadPage;
     }
 
 }
