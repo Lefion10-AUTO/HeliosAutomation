@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage {
 
-    private final By pageHeading = By.tagName("h2");
+    private final By pageHeading = By.xpath("//h2[contains(text(), 'Login Page')]");
     private final By usernameField = By.id("username");
     private final By passwordField = By.id("password");
     private final By loginButton = By.cssSelector("button[type='submit']");
