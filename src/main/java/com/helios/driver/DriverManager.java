@@ -24,7 +24,14 @@ public final class DriverManager {
             throw new IllegalStateException("WebDriver is already initialized for thread: " + Thread.currentThread().getName());
         }
 
-        log.info("Starting {} browser | headless={} | remote={}", config.browser(), config.headless(), config.remote());
+        log.info(
+                "Starting {} browser | headless={} | remote={} | pageLoadTimeout={}s | thread={}",
+                config.browser(),
+                config.headless(),
+                config.remote(),
+                TestConfig.pageLoadTimeout().toSeconds(),
+                Thread.currentThread().getName()
+        );
 
         WebDriver driver = DriverFactory.create(config);
 
