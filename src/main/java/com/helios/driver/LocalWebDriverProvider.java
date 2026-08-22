@@ -29,6 +29,7 @@ public final class LocalWebDriverProvider implements WebDriverProvider {
         if (config.headless()) {
             // Run the browser without displaying a visible UI.
             options.addArguments("--headless=new");
+            options.addArguments("--window-size=1920,1080");
         }
 
         return new ChromeDriver(options);
@@ -41,6 +42,8 @@ public final class LocalWebDriverProvider implements WebDriverProvider {
         if (config.headless()) {
             // Run the browser without displaying a visible UI.
             options.addArguments("-headless");
+            options.addArguments("--width=1920");
+            options.addArguments("--height=1080");
         }
 
         return new FirefoxDriver(options);
@@ -53,6 +56,7 @@ public final class LocalWebDriverProvider implements WebDriverProvider {
         if (config.headless()) {
             // Run the browser without displaying a visible UI.
             options.addArguments("--headless=new");
+            options.addArguments("--window-size=1920,1080");
         }
 
         return new EdgeDriver(options);
