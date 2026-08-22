@@ -30,9 +30,10 @@ public final class RemoteWebDriverProvider implements WebDriverProvider {
 
         ChromeOptions options = new ChromeOptions();
 
+        options.addArguments("--window-size=1920,1080");
+
         if (config.headless()) {
             options.addArguments("--headless=new");
-            options.addArguments("--window-size=1920,1080");
         }
 
         return options;
@@ -42,10 +43,11 @@ public final class RemoteWebDriverProvider implements WebDriverProvider {
 
         FirefoxOptions options = new FirefoxOptions();
 
+        options.addArguments("--width=1920");
+        options.addArguments("--height=1080");
+
         if (config.headless()) {
             options.addArguments("-headless");
-            options.addArguments("--width=1920");
-            options.addArguments("--height=1080");
         }
 
         return options;
@@ -55,9 +57,10 @@ public final class RemoteWebDriverProvider implements WebDriverProvider {
 
         EdgeOptions options = new EdgeOptions();
 
+        options.addArguments("--window-size=1920,1080");
+
         if (config.headless()) {
             options.addArguments("--headless=new");
-            options.addArguments("--window-size=1920,1080");
         }
 
         return options;
