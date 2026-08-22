@@ -1,6 +1,7 @@
 package com.helios.driver;
 
 import com.helios.config.BrowserConfig;
+import com.helios.config.TestConfig;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +26,13 @@ public final class DriverManager {
 
         log.info("Starting {} browser | headless={} | remote={}", config.browser(), config.headless(), config.remote());
 
-        DRIVER.set(DriverFactory.create(config));
+        WebDriver driver = DriverFactory.create(config);
+
+        driver.manage()
+                .timeouts()
+                .pageLoadTimeout(TestConfig.pageLoadTimeout());
+
+        DRIVER.set(driver);
     }
 
     public static WebDriver get() {

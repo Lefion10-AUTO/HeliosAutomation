@@ -46,6 +46,29 @@ public final class TestConfig {
         }
     }
 
+    public static Duration pageLoadTimeout() {
+        // Maximum time Selenium waits for a page navigation to finish loading.
+        String value = System.getProperty("pageLoadTimeout", "30");
+
+        try {
+            long seconds = Long.parseLong(value);
+
+            if (seconds <= 0) {
+                throw new IllegalArgumentException(
+                        "pageLoadTimeout must be greater than 0 seconds: " + value
+                );
+            }
+
+            return Duration.ofSeconds(seconds);
+
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(
+                    "pageLoadTimeout must be a valid number: " + value,
+                    e
+            );
+        }
+    }
+
     public static int retryCount() {
         try {
             return Math.max(0, Integer.parseInt(System.getProperty("test.retry.count", "2")));
